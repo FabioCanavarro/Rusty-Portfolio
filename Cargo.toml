@@ -5,5 +5,17 @@ edition = "2021"
 
 [dependencies]
 leptos = { version = "0.7.8", features = ["csr"] }
+leptos_meta = "0.7.8"
+leptos_router = "0.7.8"
 tailwind_fuse = { version = "0.3.2", features = ["variant"] }
 thaw = { version = "0.4.4", features = ["csr"] }
+
+
+[package.metadata.leptos]
+output-name = "Portfolio"  # Note this value here!!
+# IMPORTANT! Remove or comment-out
+# style-file = "style/main.scss"
+
+# Activates the tailwind build
+tailwind-input-file = "style/tailwind.css"
+tailwind-config-file = "tailwind.config.js"
