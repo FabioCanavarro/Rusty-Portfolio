@@ -1,6 +1,6 @@
 
 
-use leptos::prelude::*;
+use leptos::{html::H1, prelude::*};
 use thaw::*;
 
 
@@ -38,8 +38,16 @@ pub fn Card(title: String, img: String,body: String) -> impl IntoView {
                 <h2 class="card-title">
                     {title}
                 <div class="badge badge-secondary">NEW</div>
-                </h2>
-                <p>{body}</p>
+                </h2> 
+                    <div tabindex="0" class="collapse --color-primary-500/50">
+                        <div class="collapse-title font-semibold text-xl bg--color-primary-500/50">
+                            "More <->"
+                        </div>
+                        <div class="collapse-content">
+                            {body}
+                        </div>
+                    </div>
+                
                 <div class="card-actions justify-end">
                 <div class="badge badge-outline">Rust</div>
                 <div class="badge badge-outline">Products</div>
