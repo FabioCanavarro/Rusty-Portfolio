@@ -225,3 +225,16 @@ fn GithubStats() -> impl IntoView {
         </div>
     }
 }
+
+#[component]
+fn TechStack() -> impl IntoView {
+    view! {
+        <div class="my-4">
+            <h2 class="text-lg md:text-xl mb-3 text-[#f5e0dc] font-semibold">"💻 Tech Stack"</h2>
+            <div class="flex flex-wrap gap-4 mt-2">
+                <TechIcon icon="🦀" name="Rust" />
+                <TechIcon icon="PY" name="Python" />
+            </div>
+        </div>
+    }
+}
