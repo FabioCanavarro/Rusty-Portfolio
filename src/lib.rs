@@ -181,3 +181,33 @@ fn ProfileInfo() -> impl IntoView {
         </div>
     }
 }
+
+#[component]
+fn CodeSnippet() -> impl IntoView {
+    view! {
+        <div class="absolute -top-[60px]  left-[100px] -z-[2] bg-[#1e1e2e]/30 rounded-lg p-4 font-mono text-sm text-[#cdd6f4] overflow-hidden mt-4 w-full max-w-2xl">
+            <pre><code class="relative font-size-10 bottom-[15px] bg-gradient-to-br from-[#cba6f7] to-transparent text-transparent bg-clip-text">{"fn main() {
+    let fibonacci = |n: u32| -> u64 {
+        match n {
+            0 => 0,
+            1 => 1,
+            _ => {
+                let mut a = 0;
+                let mut b = 1;
+                for _ in 2..=n {
+                    let temp = a + b;
+                    a = b;
+                    b = temp;
+                }
+                b
+            }
+        }
+    };
+    
+    for i in 0..10 {
+        println!(\"Fibonacci({}) = {}\", i, fibonacci(i));
+    }
+}"}</code></pre>
+        </div>
+    }
+}
