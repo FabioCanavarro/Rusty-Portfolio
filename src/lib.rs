@@ -250,3 +250,42 @@ fn TechIcon(icon: &'static str, name: &'static str) -> impl IntoView {
         </div>
     }
 }
+
+#[component]
+fn AllRepos(expanded: Memo<bool>) -> impl IntoView {
+    let display_class = move || {
+        if expanded.get() {
+            "w-3/5 p-8 min-h-screen fixed right-0 top-0 z-30 overflow-y-auto bg-[#1e1e2e]"
+        } else {
+            "hidden"
+        }
+    };
+    
+    view! {
+        <div class=display_class>
+            <h2 class="text-2xl mb-4 text-[#f5e0dc] font-semibold mt-16">All Repositories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <RepoCard 
+                    title="Project 1" 
+                    description="Description of this repository and what it does."
+                    tags=vec!["Rust", "CLI"]
+                />
+                <RepoCard 
+                    title="Project 2" 
+                    description="Description of this repository and what it does."
+                    tags=vec!["TypeScript", "React"]
+                />
+                <RepoCard 
+                    title="Project 3" 
+                    description="Description of this repository and what it does."
+                    tags=vec!["Python", "ML"]
+                />
+                <RepoCard 
+                    title="Project 4" 
+                    description="Description of this repository and what it does."
+                    tags=vec!["Rust", "WebAssembly"]
+                />
+            </div>
+        </div>
+    }
+}
