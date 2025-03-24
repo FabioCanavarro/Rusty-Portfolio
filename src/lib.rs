@@ -18,3 +18,18 @@ pub fn App() -> impl IntoView {
         </Router>
     }
 }
+
+#[component]
+fn Portfolio() -> impl IntoView {
+    let expanded = create_rw_signal(false);
+    
+    view! {
+        <div class="bg-[#1e1e2e] text-[#cdd6f4] font-inter overflow-x-hidden min-h-screen">
+            // Changed to flex-col on mobile, flex-row on desktop
+            <div class="flex flex-col md:flex-row w-full min-h-screen">
+                <LeftSection expanded=expanded/>
+                <RightSection/>
+            </div>
+        </div>
+    }
+}
