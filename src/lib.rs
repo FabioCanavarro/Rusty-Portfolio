@@ -155,3 +155,29 @@ fn RightSection() -> impl IntoView {
         </div>
     }
 }
+
+#[component]
+fn ProfileInfo() -> impl IntoView {
+    view! {
+        <div class="profile-info z-10 p-6 bg-[#1e1e2e]/80 backdrop-blur-sm rounded-lg mt-8">
+            <h1 class="text-3xl md:text-4xl mb-4 font-bold" style="background: linear-gradient(45deg, #f5e0dc, #cba6f7); -webkit-background-clip: text; background-clip: text; color: transparent;">
+                Fabio Canavarro
+            </h1>
+            <div>
+                <CodeSnippet/>
+            </div>
+            <div class="flex gap-4 mb-6">
+                <a 
+                    href="https://github.com/FabioCanavarro" 
+                    target="_blank" 
+                    class="text-[#cdd6f4] no-underline flex items-center gap-2 transition-colors duration-300 hover:text-[#cba6f7]"
+                >
+                    GitHub
+                </a>
+            </div>
+            
+            <GithubStats/>
+            <TechStack/>
+        </div>
+    }
+}
