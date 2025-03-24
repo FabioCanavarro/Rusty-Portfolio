@@ -142,7 +142,7 @@ fn RepoCard(
                     view! {
                         <Button
                             on_click=toggle_expansion
-                            class="bg-[#585b70] text-[#cdd6f4] px-1 py-0 rounded text-xs mt-1 hover:bg-[#6c7086] transition-colors"
+                            class="btn btn-soft btn-primary text-xs mt-0.2 py-0 px-1.8 transition-colors h-[1.5rem] hover:bg-[#cba6f7] hover:text-[#1e1e2e] mb-5"
                         >
                             {move || if is_expanded.get() { "Show Less" } else { "Show More" }}
                         </Button>
@@ -152,7 +152,7 @@ fn RepoCard(
                 }
             }}
             
-            <div class="flex flex-wrap gap-2 mt-2">
+            <div class="flex flex-wrap gap-2">
                 {tags.into_iter().map(|tag| view! {
                     <span class="bg-[#585b70] text-[#cdd6f4] px-2 py-1 rounded text-xs">{tag}</span>
                 }).collect::<Vec<_>>()}
