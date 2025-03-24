@@ -38,6 +38,7 @@ fn Portfolio() -> impl IntoView {
 fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
     let toggle_expanded = move |_| expanded.update(|val| *val = !*val);
 
+    
     let class = move || {
         if expanded.get() {
             "w-full fixed h-screen overflow-auto transition-all duration-500 ease-in-out z-20 transform-none"
@@ -87,37 +88,19 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
                 <div class="grid grid-cols-1 gap-4">
                     <RepoCard
                         title="Project Name"
-                        description="A brief description of this amazing project that showcases your skills and talents."
+                        description="A brief description of this amazing project that showcases your skills and talents.
+                         lorem ipsum dolor sit amet .consectetur adipiscing .elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                          ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat jfejenwbhvjsdn
+                          vsdbvghsdvbnf sdvn sdvjersdbjrvgbsjdvbnsd vn dsnvsdnjvnsd vbnds vbn sjvbsnjjvbhsdbvbjSBvb zsbdv zsm vd vbmn zsnbvbs
+                          zdvbsnzv .fe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenj
+                          enfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bf
+                          jenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjke"
                         tags=vec!["Rust", "WebAssembly", "TypeScript"]
                     />
                     <RepoCard
-                        title="Another Project"
-                        description="Another brilliant project you've worked on that demonstrates your coding prowess."
-                        tags=vec!["Rust", "Systems", "Performance"]
-                    />
-
-
-                    <h3 class="text-xl text-[#f5e0dc] font-medium mt-6 mb-4">All Repositories</h3>
-
-                    <RepoCard
-                        title="Project 1"
-                        description="Description of this repository and what it does."
-                        tags=vec!["Rust", "CLI"]
-                    />
-                    <RepoCard
-                        title="Project 2"
-                        description="Description of this repository and what it does."
-                        tags=vec!["TypeScript", "React"]
-                    />
-                    <RepoCard
-                        title="Project 3"
-                        description="Description of this repository and what it does."
-                        tags=vec!["Python", "ML"]
-                    />
-                    <RepoCard
-                        title="Project 4"
-                        description="Description of this repository and what it does."
-                        tags=vec!["Rust", "WebAssembly"]
+                        title="Project Name"
+                        description="A brief description of this amazing project that showcases your skills and talents."
+                        tags=vec!["Rust", "WebAssembly", "TypeScript"]
                     />
 
                 </div>
@@ -132,10 +115,43 @@ fn RepoCard(
     description: &'static str,
     tags: Vec<&'static str>,
 ) -> impl IntoView {
+    let is_expanded = create_rw_signal(false);
+    
+    let is_long_description = description.lines().count() > 3 || description.len() > 150;
+  
+    let short_description = move || {
+        if is_long_description && !is_expanded.get() {
+            let shortened = description.lines().take(3).collect::<Vec<_>>().join("\n");
+            format!("{}...", shortened)
+        } else {
+            description.to_string()
+        }
+    };
+    
+    // Toggle expansion function
+    let toggle_expansion = move |_| is_expanded.update(|val| *val = !*val);
+
     view! {
         <div class="bg-[#1e1e2e]/70 rounded-lg p-6 border-l-4 border-[#cba6f7]">
             <h3 class="text-xl mb-2 text-[#f5e0dc] font-medium">{title}</h3>
-            <p class="text-sm mb-2">{description}</p>
+            <p class="text-sm mb-2">{short_description}</p>
+            
+            // Show dropdown button only if description is long
+            {move || {
+                if is_long_description {
+                    view! {
+                        <Button
+                            on_click=toggle_expansion
+                            class="bg-[#585b70] text-[#cdd6f4] px-1 py-0 rounded text-xs mt-1 hover:bg-[#6c7086] transition-colors"
+                        >
+                            {move || if is_expanded.get() { "Show Less" } else { "Show More" }}
+                        </Button>
+                    }.into_view()
+                } else {
+                    view! {}.into_view()
+                }
+            }}
+            
             <div class="flex flex-wrap gap-2 mt-2">
                 {tags.into_iter().map(|tag| view! {
                     <span class="bg-[#585b70] text-[#cdd6f4] px-2 py-1 rounded text-xs">{tag}</span>
