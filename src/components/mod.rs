@@ -1,5 +1,3 @@
-
-
 use leptos::{html::H1, prelude::*};
 use thaw::*;
 
@@ -26,7 +24,7 @@ pub fn App() -> impl IntoView{
 }
 
 #[component]
-pub fn Card(title: String, img: String,body: String) -> impl IntoView {
+pub fn Card(title: String, img: String, body: String) -> impl IntoView {
     view! {
         <div class="card bg-base-100 w-96 shadow-sm">
             <figure>
@@ -39,9 +37,9 @@ pub fn Card(title: String, img: String,body: String) -> impl IntoView {
                     {title}
                 <div class="badge badge-secondary">NEW</div>
                 </h2> 
-                    <div tabindex="0" class="collapse --color-primary-500/50">
-                        <div class="collapse-title font-semibold text-xl bg--color-primary-500/50">
-                            "More <->"
+                    <div tabindex="0" class="collapse bg-primary/50">
+                        <div class="collapse-title font-semibold text-xl bg-base-300/30">
+                            {"More <->"}
                         </div>
                         <div class="collapse-content">
                             {body}

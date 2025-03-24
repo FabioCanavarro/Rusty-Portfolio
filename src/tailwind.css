@@ -1,0 +1,20 @@
+/* src/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@layer base {
+  body {
+    @apply font-inter;
+  }
+  
+  pre {
+    @apply font-mono;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-catppuccin-rosewater to-catppuccin-mauve bg-clip-text text-transparent;
+  }
+}

@@ -1,21 +1,37 @@
 [package]
-name = "Portfolio"
+name = "leptos-portfolio"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-leptos = { version = "0.7.8", features = ["csr"] }
-leptos_meta = "0.7.8"
-leptos_router = "0.7.8"
-tailwind_fuse = { version = "0.3.2", features = ["variant"] }
-thaw = { version = "0.4.4", features = ["csr"] }
+[lib]
+name = "leptos_portfolio"
+crate-type = ["cdylib"]
 
+
+[dependencies]
+leptos = { version = "0.6", features = ["csr"] }
+leptos_meta = { version = "0.6", features = ["csr"] }
+leptos_router = { version = "0.6", features = ["csr"] }
+serde = { version = "1.0", features = ["derive"] }
+thaw = "0.2"
+lucide-leptos = "1.1.0"
+web-sys = { version = "0.3", features = ["Window", "ScrollToOptions"] }
+wasm-bindgen = "0.2"
+uuid = { version = "1.16.0", features = ["v4", "js"] }
+leptos-use = "0.15.7"
+leptos_reactive = "0.6.15"
+reactive_graph = "0.1.8"
+leptos_animation = "0.5.2"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3"
+
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
 
 [package.metadata.leptos]
-output-name = "Portfolio"  # Note this value here!!
-# IMPORTANT! Remove or comment-out
-# style-file = "style/main.scss"
-
-# Activates the tailwind build
-tailwind-input-file = "style/tailwind.css"
+output-name = "leptos-portfolio"
+tailwind-input-file = "src/tailwind.css"
 tailwind-config-file = "tailwind.config.js"
