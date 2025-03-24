@@ -144,3 +144,14 @@ fn RepoCard(
         </div>
     }
 }
+
+#[component]
+fn RightSection() -> impl IntoView {
+    view! {
+        <div class="w-full md:w-3/5 min-h-screen p-8">
+            <div class="relative flex justify-end">
+                <ProfileInfo/>
+            </div>
+        </div>
+    }
+}
