@@ -125,3 +125,22 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
         </div>
     }
 }
+
+#[component]
+fn RepoCard(
+    title: &'static str,
+    description: &'static str,
+    tags: Vec<&'static str>,
+) -> impl IntoView {
+    view! {
+        <div class="bg-[#1e1e2e]/70 rounded-lg p-6 border-l-4 border-[#cba6f7]">
+            <h3 class="text-xl mb-2 text-[#f5e0dc] font-medium">{title}</h3>
+            <p class="text-sm mb-2">{description}</p>
+            <div class="flex flex-wrap gap-2 mt-2">
+                {tags.into_iter().map(|tag| view! {
+                    <span class="bg-[#585b70] text-[#cdd6f4] px-2 py-1 rounded text-xs">{tag}</span>
+                }).collect::<Vec<_>>()}
+            </div>
+        </div>
+    }
+}
