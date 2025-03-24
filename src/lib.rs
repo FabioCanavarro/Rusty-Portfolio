@@ -1,14 +1,14 @@
+use leptos::component;
+use leptos::AnimatedShow;
 use leptos::*;
 use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};
-use leptos::component;
 use thaw::Button;
-use leptos::AnimatedShow;
 
 #[component]
 pub fn App() -> impl IntoView {
     leptos_meta::provide_meta_context();
-    
+
     view! {
         <Stylesheet id="leptos" href="/pkg/leptos-portfolio.css"/>
         <Router>
@@ -22,7 +22,7 @@ pub fn App() -> impl IntoView {
 #[component]
 fn Portfolio() -> impl IntoView {
     let expanded = create_rw_signal(false);
-    
+
     view! {
         <div class="bg-[#1e1e2e] text-[#cdd6f4] font-inter overflow-x-hidden min-h-screen">
             // Changed to flex-col on mobile, flex-row on desktop
@@ -37,7 +37,7 @@ fn Portfolio() -> impl IntoView {
 #[component]
 fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
     let toggle_expanded = move |_| expanded.update(|val| *val = !*val);
-    
+
     let class = move || {
         if expanded.get() {
             "w-full fixed h-screen overflow-auto transition-all duration-500 ease-in-out z-20 transform-none"
@@ -46,7 +46,7 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
             "w-full md:w-2/5 h-screen md:sticky md:top-0 overflow-hidden transition-all duration-500 ease-in-out z-20"
         }
     };
-    
+
     let overlay_class = move || {
         if expanded.get() {
             "fixed inset-0 bg-gradient-to-br from-black/10 to-black/90 backdrop-blur-lg opacity-75 transition-all duration-500 ease-in-out"
@@ -54,9 +54,9 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
             "absolute inset-0 bg-gradient-to-br from-black/10 to-black/90 backdrop-blur-lg transition-all duration-500 ease-in-out"
         }
     };
-    
+
     view! {
-        <div 
+        <div
             class=class
             style="background: url('/api/placeholder/400/320') center center; background-size: cover;"
         >
@@ -79,43 +79,43 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
                     >
                         <div class="description-box bg-[#1e1e2e]/80 backdrop-blur-sm rounded-lg p-6 mb-6">
                             <h3 class="text-xl text-[#f5e0dc] font-medium mb-2">About Me</h3>
-                            <p class="text-sm mb-4">"I'm a passionate developer with expertise in Rust and Web Technologies. 
+                            <p class="text-sm mb-4">"I'm a passionate developer with expertise in Rust and Web Technologies.
                             I love building high-performance applications with elegant solutions."</p>
-                            
+
                         </div>
                     </AnimatedShow>
                 <div class="grid grid-cols-1 gap-4">
-                    <RepoCard 
-                        title="Project Name" 
+                    <RepoCard
+                        title="Project Name"
                         description="A brief description of this amazing project that showcases your skills and talents."
                         tags=vec!["Rust", "WebAssembly", "TypeScript"]
                     />
-                    <RepoCard 
-                        title="Another Project" 
+                    <RepoCard
+                        title="Another Project"
                         description="Another brilliant project you've worked on that demonstrates your coding prowess."
                         tags=vec!["Rust", "Systems", "Performance"]
                     />
-                    
-                    
+
+
                     <h3 class="text-xl text-[#f5e0dc] font-medium mt-6 mb-4">All Repositories</h3>
-                    
-                    <RepoCard 
-                        title="Project 1" 
+
+                    <RepoCard
+                        title="Project 1"
                         description="Description of this repository and what it does."
                         tags=vec!["Rust", "CLI"]
                     />
-                    <RepoCard 
-                        title="Project 2" 
+                    <RepoCard
+                        title="Project 2"
                         description="Description of this repository and what it does."
                         tags=vec!["TypeScript", "React"]
                     />
-                    <RepoCard 
-                        title="Project 3" 
+                    <RepoCard
+                        title="Project 3"
                         description="Description of this repository and what it does."
                         tags=vec!["Python", "ML"]
                     />
-                    <RepoCard 
-                        title="Project 4" 
+                    <RepoCard
+                        title="Project 4"
                         description="Description of this repository and what it does."
                         tags=vec!["Rust", "WebAssembly"]
                     />
@@ -167,15 +167,15 @@ fn ProfileInfo() -> impl IntoView {
                 <CodeSnippet/>
             </div>
             <div class="flex gap-4 mb-6">
-                <a 
-                    href="https://github.com/FabioCanavarro" 
-                    target="_blank" 
+                <a
+                    href="https://github.com/FabioCanavarro"
+                    target="_blank"
                     class="text-[#cdd6f4] no-underline flex items-center gap-2 transition-colors duration-300 hover:text-[#cba6f7]"
                 >
                     GitHub
                 </a>
             </div>
-            
+
             <GithubStats/>
             <TechStack/>
         </div>
@@ -260,28 +260,28 @@ fn AllRepos(expanded: Memo<bool>) -> impl IntoView {
             "hidden"
         }
     };
-    
+
     view! {
         <div class=display_class>
             <h2 class="text-2xl mb-4 text-[#f5e0dc] font-semibold mt-16">All Repositories</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                <RepoCard 
-                    title="Project 1" 
+                <RepoCard
+                    title="Project 1"
                     description="Description of this repository and what it does."
                     tags=vec!["Rust", "CLI"]
                 />
-                <RepoCard 
-                    title="Project 2" 
+                <RepoCard
+                    title="Project 2"
                     description="Description of this repository and what it does."
                     tags=vec!["TypeScript", "React"]
                 />
-                <RepoCard 
-                    title="Project 3" 
+                <RepoCard
+                    title="Project 3"
                     description="Description of this repository and what it does."
                     tags=vec!["Python", "ML"]
                 />
-                <RepoCard 
-                    title="Project 4" 
+                <RepoCard
+                    title="Project 4"
                     description="Description of this repository and what it does."
                     tags=vec!["Rust", "WebAssembly"]
                 />
