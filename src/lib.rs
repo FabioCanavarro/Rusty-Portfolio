@@ -238,3 +238,15 @@ fn TechStack() -> impl IntoView {
         </div>
     }
 }
+
+#[component]
+fn TechIcon(icon: &'static str, name: &'static str) -> impl IntoView {
+    view! {
+        <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 bg-[#313244] rounded-lg flex items-center justify-center text-xl">
+                {icon}
+            </div>
+            <div class="text-xs">{name}</div>
+        </div>
+    }
+}
