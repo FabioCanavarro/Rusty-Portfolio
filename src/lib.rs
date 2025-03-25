@@ -305,3 +305,30 @@ fn AllRepos(expanded: Memo<bool>) -> impl IntoView {
         </div>
     }
 }
+
+
+
+#[component]
+fn SkillCategory(
+    category: &'static str, 
+    skills: Vec<(&'static str, u8)>
+) -> impl IntoView {
+    view! {
+        <div>
+            <h3 class="text-lg mb-2 text-[#f5e0dc]">{category}</h3>
+            <div class="space-y-2">
+                {skills.into_iter().map(|(skill, level)| view! {
+                    <div class="flex items-center gap-3">
+                        <div class="w-1/3 text-sm text-[#cdd6f4]">{skill}</div>
+                        <div class="w-2/3 bg-[#313244] rounded-full h-2">
+                            <div 
+                                class="bg-[#cba6f7] h-2 rounded-full" 
+                                style=format!("width: {}%", level)
+                            ></div>
+                        </div>
+                    </div>
+                }).collect::<Vec<_>>()}
+            </div>
+        </div>
+    }
+}
