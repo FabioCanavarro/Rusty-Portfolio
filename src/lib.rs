@@ -167,6 +167,7 @@ fn RightSection() -> impl IntoView {
         <div class="w-full md:w-3/5 min-h-screen p-8">
             <div class="relative flex justify-end">
                 <ProfileInfo/>
+                <SkillsAndConnect/>
             </div>
         </div>
     }
@@ -306,7 +307,73 @@ fn AllRepos(expanded: Memo<bool>) -> impl IntoView {
     }
 }
 
+#[component]
+fn SkillsAndConnect() -> impl IntoView {
+    view! {
+        <div class="bg-[#1e1e2e]/70 rounded-lg p-6 mt-6">
+            <div class="grid md:grid-cols-2 gap-6">
+                {/* Skills Section */}
+                <div>
+                    <h2 class="text-xl mb-4 text-[#f5e0dc] font-semibold">"🚀 Skills Matrix"</h2>
+                    <div class="space-y-4">
+                        <SkillCategory 
+                            category="Programming" 
+                            skills=vec![
+                                ("Rust", 90),
+                                ("Python", 85),
+                                ("TypeScript", 75)
+                            ]
+                        />
+                        <SkillCategory 
+                            category="Technologies" 
+                            skills=vec![
+                                ("WebAssembly", 80),
+                                ("Leptos", 85),
+                                ("React", 70)
+                            ]
+                        />
+                    </div>
+                </div>
 
+                {/* Connect Section */}
+                <div>
+                    <h2 class="text-xl mb-4 text-[#f5e0dc] font-semibold">"📬 Let's Connect"</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-[#cba6f7]">"📧"</span>
+                            <a 
+                                href="mailto:fabio.canavarro@example.com" 
+                                class="text-[#cdd6f4] hover:text-[#f5e0dc] transition-colors"
+                            >
+                                fabio.canavarro@example.com
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[#cba6f7]">"🌐"</span>
+                            <a 
+                                href="https://linkedin.com/in/fabiocanavarro" 
+                                target="_blank"
+                                class="text-[#cdd6f4] hover:text-[#f5e0dc] transition-colors"
+                            >
+                                LinkedIn Profile
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[#cba6f7]">"🐦"</span>
+                            <a 
+                                href="https://twitter.com/fabiocanavarro" 
+                                target="_blank"
+                                class="text-[#cdd6f4] hover:text-[#f5e0dc] transition-colors"
+                            >
+                                Twitter/X
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    }
 
 #[component]
 fn SkillCategory(
