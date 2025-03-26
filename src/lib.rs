@@ -167,7 +167,7 @@ fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
         <div class=move || {
             let base_class = "w-full md:w-3/5 min-h-screen p-8 transition-all duration-500 ease-in-out";
             if expanded.get() {
-                format!("{} md:-translate-x-[-67%]", base_class)
+                format!("{} md:-translate-x-[100%]", base_class)
             } else {
                 base_class.to_string()
             }
