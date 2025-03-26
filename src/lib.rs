@@ -28,7 +28,7 @@ fn Portfolio() -> impl IntoView {
             // Changed to flex-col on mobile, flex-row on desktop
             <div class="flex flex-col md:flex-row w-full min-h-screen">
                 <LeftSection expanded=expanded/>
-                <RightSection/>
+                <RightSection expanded = expanded/>
             </div>
         </div>
     }
@@ -162,9 +162,16 @@ fn RepoCard(
 }
 
 #[component]
-fn RightSection() -> impl IntoView {
+fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
     view! {
-        <div class="w-full md:w-3/5 min-h-screen p-8">
+        <div class=move || {
+            let base_class = "w-full md:w-3/5 min-h-screen p-8 transition-all duration-500 ease-in-out";
+            if expanded.get() {
+                format!("{} md:-translate-x-[-67%]", base_class)
+            } else {
+                base_class.to_string()
+            }
+        }>
             <div class="relative flex justify-end">
                 <ProfileInfo/>
                 <SkillsAndConnect/>
