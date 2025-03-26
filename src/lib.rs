@@ -358,7 +358,7 @@ fn SkillsAndConnect() -> impl IntoView {
                         <div class="flex items-center gap-3">
                             <span class="text-[#cba6f7]">"🌐"</span>
                             <a 
-                                href="https://linkedin.com/in/fabiocanavarro" 
+                                href="https://www.linkedin.com/in/fabio-canavarro-584b232a7/" 
                                 target="_blank"
                                 class="text-[#cdd6f4] hover:text-[#f5e0dc] transition-colors"
                             >
