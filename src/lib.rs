@@ -349,7 +349,7 @@ fn SkillsAndConnect() -> impl IntoView {
                         <div class="flex items-center gap-3">
                             <span class="text-[#cba6f7]">"📧"</span>
                             <a 
-                                href="mailto:fabio.canavarro@example.com" 
+                                href="mailto:fakekelios071@gmail.com" 
                                 class="text-[#cdd6f4] hover:text-[#f5e0dc] transition-colors"
                             >
                                 fabio.canavarro@example.com
