@@ -65,13 +65,19 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
             <div class="featured-repo relative z-10 p-8 h-full opacity-80 text-[#cdd6f4]">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-2xl text-[#f5e0dc] font-semibold">Featured Projects</h2>
-                    <Button
-                        on_click=toggle_expanded
-                        class="bg-[#cba6f7] text-[#1e1e2e] px-3 py-1 rounded hover:bg-[#f5c2e7] transition-colors"
-                    >
-                        {move || if expanded.get() { "Collapse" } else { "Expand" }}
-                    </Button>
+                    <div class="padding-1">
+                        <div class="divider divider-horizontal"></div>
+                        <Button
+                            on_click=toggle_expanded
+                            class="bg-[#cba6f7] text-[#1e1e2e] px-3 py-1 rounded hover:bg-[#f5c2e7] transition-colors"
+                        >
+
+                            {move || if expanded.get() { "Collapse" } else { "Expand" }}
+                        </Button>
+                    </div>
                 </div>
+
+                <div class="divider divider-vertical"></div>
                     <AnimatedShow
                         when=Signal::derive(move || true)
                         hide_delay= std::time::Duration::from_millis(300)
@@ -82,8 +88,8 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
                             <h3 class="text-xl text-[#f5e0dc] font-medium mb-2">About Me</h3>
                             <p class="text-sm mb-4">"I'm a passionate developer with expertise in Rust and Web Technologies.
                             I love building high-performance applications with elegant solutions."</p>
-
                         </div>
+                        <div class="divider divider-vertical"></div>
                     </AnimatedShow>
                 <div class="grid grid-cols-1 gap-4">
                     <RepoCard
