@@ -174,6 +174,7 @@ fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
         }>
             <div class="relative flex justify-end">
                 <ProfileInfo/>
+                <div class="divider divider-horizontal"></div>
                 <SkillsAndConnect/>
             </div>
         </div>
@@ -184,7 +185,7 @@ fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
 fn ProfileInfo() -> impl IntoView {
     view! {
         <div class="profile-info z-10 p-6 bg-[#313244]/80 rounded-lg mt-8 w-[60%]">
-            <h1 class="text-3xl md:text-4xl mb-4 font-bold" style="background: linear-gradient(45deg, #f5e0dc, #cba6f7); -webkit-background-clip: text; background-clip: text; color: transparent;">
+            <h1 class="link link-hover text-3xl md:text-4xl mb-4 font-bold" style="background: linear-gradient(45deg, #f5e0dc, #cba6f7); -webkit-background-clip: text; background-clip: text; color: transparent;">
                 Fabio Canavarro
             </h1>
             <div>
@@ -393,7 +394,7 @@ fn SkillCategory(
             <h3 class="text-lg mb-2 text-[#f5e0dc]">{category}</h3>
             <div class="space-y-2">
                 {skills.into_iter().map(|(skill, level)| view! {
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-5">
                         <div class="w-1/3 text-sm text-[#cdd6f4]">{skill}</div>
                         <div class="w-2/3 bg-[#313244] rounded-full h-2">
                             <div 
