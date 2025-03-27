@@ -164,19 +164,27 @@ fn RepoCard(
 #[component]
 fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
     view! {
-        <div class=move || {
-            let base_class = "w-full md:w-3/5 min-h-screen p-8 transition-all duration-500 ease-in-out";
-            if expanded.get() {
-                format!("{} md:-translate-x-[100%]", base_class)
-            } else {
-                base_class.to_string()
+        <div 
+            class=move || {
+                let base_class = "w-full md:w-3/5 min-h-screen p-8 transition-all duration-700 ease-in-out transform";
+                match expanded.get() {
+                    true => format!("{} md:translate-x-full md:opacity-100 scale-95", base_class),
+                    false => format!("{} md:translate-x-0 md:opacity-100 scale-100", base_class)
+                }
             }
-        }>
-            <div class="relative flex justify-end">
-                <ProfileInfo/>
-                <div class="divider divider-horizontal"></div>
-                <SkillsAndConnect/>
-            </div>
+        >
+            <AnimatedShow
+                when=Signal::derive(move || !expanded.get())
+                hide_delay=std::time::Duration::from_millis(300)
+                show_class="transition-all duration-700 ease-out transform opacity-100 translate-y-0"
+                hide_class="opacity-0 translate-y-10 scale-95"
+            >
+                <div class="relative flex flex-col md:flex-row justify-end space-y-4 md:space-y-0 md:space-x-4">
+                    <ProfileInfo/>
+                    <div class="divider divider-horizontal"></div>
+                    <SkillsAndConnect/>
+                </div>
+            </AnimatedShow>
         </div>
     }
 }
@@ -184,14 +192,14 @@ fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
 #[component]
 fn ProfileInfo() -> impl IntoView {
     view! {
-        <div class="profile-info z-10 p-6 bg-[#313244]/80 rounded-lg mt-8 w-[60%]">
-            <h1 class="link link-hover text-3xl md:text-4xl mb-4 font-bold" style="background: linear-gradient(45deg, #f5e0dc, #cba6f7); -webkit-background-clip: text; background-clip: text; color: transparent;">
+        <div class="profile-info z-10 p-6 bg-[#313244] rounded-lg mt-8 w-[60%] bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 backdrop-saturate-100 backdrop-contrast-120">
+            <h1 class="text-3xl md:text-4xl mb-4 font-bold" style="background: linear-gradient(45deg, #f5e0dc, #cba6f7); -webkit-background-clip: text; background-clip: text; color: transparent;">
                 Fabio Canavarro
             </h1>
             <div>
                 <CodeSnippet/>
             </div>
-            <div class="flex gap-4 mb-6">
+            <div class="link link-hover flex gap-4 mb-6">
                 <a
                     href="https://github.com/FabioCanavarro"
                     target="_blank"
@@ -210,8 +218,8 @@ fn ProfileInfo() -> impl IntoView {
 #[component]
 fn CodeSnippet() -> impl IntoView {
     view! {
-        <div class="absolute -top-[45px] left-[125px] -z-[2] rounded-lg p-4 font-mono text-sm text-[#cdd6f4]/30 overflow-hidden mt-4 w-full max-w-2xl">
-            <pre><code class="relative font-size-10 bottom-[15px] bg-gradient-to-br from-[#cdd6f4] to-transparent text-transparent bg-clip-text">{"
+        <div class="absolute top-[5px] left-[310px] -z-[2] rounded-lg p-4 font-mono text-xs text-[#cdd6f4]/30 overflow-hidden mt-4 w-full max-w-2xl">
+            <pre><code class="relative font-size-10 bottom-[15px] bg-gradient-to-br from-[#cdd6f4]/60 to-transparent text-transparent bg-clip-text">{"
 fn main() {
     let fibonacci = |n: u32| -> u64 {
         match n {
@@ -220,20 +228,9 @@ fn main() {
             _ => {
                 let mut a = 0;
                 let mut b = 1;
-                for _ in 2..=n {
-                    let temp = a + b;
-                    a = b;
-                    b = temp;
+                
                 }
-                b
-            }
-        }
-    };
-    
-    for i in 0..10 {
-        println!(\"Fibonacci({}) = {}\", i, fibonacci(i));
-    }
-}"}</code></pre>
+                "}</code></pre>
         </div>
     }
 }
