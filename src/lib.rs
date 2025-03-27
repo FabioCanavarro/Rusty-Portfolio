@@ -44,7 +44,7 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
             "w-full fixed h-screen overflow-auto transition-all duration-500 ease-in-out z-20 transform-none"
         } else {
             // Changed to use sticky positioning and flex-based width
-            "w-full md:w-2/5 h-screen md:sticky md:top-0 overflow-hidden transition-all duration-500 ease-in-out z-20"
+            "w-full md:w-[30%] h-screen md:sticky md:top-0 overflow-hidden transition-all duration-500 ease-in-out z-20"
         }
     };
 
@@ -183,7 +183,7 @@ fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
 #[component]
 fn ProfileInfo() -> impl IntoView {
     view! {
-        <div class="profile-info z-10 p-6 bg-[#1e1e2e]/80 backdrop-blur-sm rounded-lg mt-8">
+        <div class="profile-info z-10 p-6 bg-[#313244]/80 rounded-lg mt-8 w-[60%]">
             <h1 class="text-3xl md:text-4xl mb-4 font-bold" style="background: linear-gradient(45deg, #f5e0dc, #cba6f7); -webkit-background-clip: text; background-clip: text; color: transparent;">
                 Fabio Canavarro
             </h1>
@@ -209,8 +209,9 @@ fn ProfileInfo() -> impl IntoView {
 #[component]
 fn CodeSnippet() -> impl IntoView {
     view! {
-        <div class="absolute -top-[60px]  left-[100px] -z-[2] bg-[#1e1e2e]/30 rounded-lg p-4 font-mono text-sm text-[#cdd6f4] overflow-hidden mt-4 w-full max-w-2xl">
-            <pre><code class="relative font-size-10 bottom-[15px] bg-gradient-to-br from-[#cba6f7] to-transparent text-transparent bg-clip-text">{"fn main() {
+        <div class="absolute -top-[45px] left-[125px] -z-[2] rounded-lg p-4 font-mono text-sm text-[#cdd6f4]/30 overflow-hidden mt-4 w-full max-w-2xl">
+            <pre><code class="relative font-size-10 bottom-[15px] bg-gradient-to-br from-[#cdd6f4] to-transparent text-transparent bg-clip-text">{"
+fn main() {
     let fibonacci = |n: u32| -> u64 {
         match n {
             0 => 0,
