@@ -368,7 +368,6 @@ fn SkillsAndConnect() -> impl IntoView {
                     </div>
                 </div>
 
-                {/* Connect Section */}
                 <div>
                     <h2 class="text-xl mb-4 text-[#f5e0dc] font-semibold">"📬 Let's Connect"</h2>
                     <div class="space-y-4">
