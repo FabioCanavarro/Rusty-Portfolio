@@ -4,6 +4,7 @@ use leptos::*;
 use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};
 use thaw::Button;
+use web_sys::MouseEvent;
 
 #[allow(dead_code)]
 enum SkillLevel {
@@ -122,8 +123,8 @@ fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
                             ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat jfejenwbhvjsdn
                             vsdbvghsdvbnf sdvn sdvjersdbjrvgbsjdvbnsd vn dsnvsdnjvnsd vbnds vbn sjvbsnjjvbhsdbvbjSBvb zsbdv zsm vd vbmn zsnbvbs
                             zdvbsnzv .fe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenj
-                            enfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bf
-                            jenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjke"
+                            enfjkefe bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe bf
+                            jenjenfjkefe bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe  bfjenjenfjkefe"
                         tags=vec!["Rust", "WebAssembly", "TypeScript"]
                     />
                     <RepoCard
@@ -144,44 +145,42 @@ fn RepoCard(
     description: &'static str,
     tags: Vec<&'static str>,
 ) -> impl IntoView {
-    let is_expanded = create_rw_signal(false);
     
     let is_long_description = description.lines().count() > 3 || description.len() > 150;
 
-    let short_description = move || {
-        if is_long_description && !is_expanded.get() {
-            let shortened = description.lines().take(3).collect::<Vec<_>>().join("\n");
-            format!("{}...", shortened)
-        } else {
-            description.to_string()
-        }
-    };
-    
-    // Toggle expansion function
-    let toggle_expansion = move |_| is_expanded.update(|val| *val = !*val);
 
     view! {
         <div class="bg-[#1e1e2e]/70 rounded-lg p-6 border-l-4 border-[#cba6f7]">
             <h3 class="text-xl mb-2 text-[#f5e0dc] font-medium">{title}</h3>
-            <p class="text-sm mb-2">{short_description}</p>
-            
             // Show dropdown button only if description is long
             {move || {
                 if is_long_description {
                     view! {
-                        <Button
+                        <div tabindex="0" class="collapse collapse-arrow bg-base-100 border-base-300 border ">
+                            <div class="collapse-title font-semibold">Description</div>
+                            <div class="collapse-content text-sm">
+                                {description}
+                            </div>
+                        </div>
+                        /* <Button
                             on_click=toggle_expansion
                             class="btn btn-soft btn-primary text-xs mt-0.2 py-0 px-1.8 transition-colors h-[1.5rem] hover:bg-[#cba6f7] hover:text-[#1e1e2e] mb-5"
                         >
                             {move || if is_expanded.get() { "Show Less" } else { "Show More" }}
-                        </Button>
+                        </Button> */
                     }.into_view()
                 } else {
-                    view! {}.into_view()
+                    view! {<div tabindex="0" class="collapse collapse-arrow collapse-open bg-base-100 border-base-300 border">
+                        <div class="collapse-title font-semibold">Description</div>
+                        <div class="collapse-content text-sm">
+                            {description}
+                        </div>
+                    </div>
+                    }.into_view()
                 }
             }}
             
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 py-3">
                 {tags.into_iter().map(|tag| view! {
                     <span class="bg-[#585b70] text-[#cdd6f4] px-2 py-1 rounded text-xs">{tag}</span>
                 }).collect::<Vec<_>>()}
