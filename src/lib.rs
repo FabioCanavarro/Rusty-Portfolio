@@ -347,7 +347,6 @@ fn SkillsAndConnect() -> impl IntoView {
     view! {
         <div class="bg-[#1e1e2e]/70 rounded-lg p-6 mt-6">
             <div class="grid md:grid-cols-2 gap-6">
-                {/* Skills Section */}
                 <div>
                     <h2 class="text-xl mb-4 text-[#f5e0dc] font-semibold">"🚀 Skills Matrix"</h2>
                     <div class="space-y-4">
