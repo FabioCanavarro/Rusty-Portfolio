@@ -5,6 +5,30 @@ use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};
 use thaw::Button;
 
+#[allow(dead_code)]
+enum SkillLevel {
+    Beginner,
+    Intermediate,
+    Advanced,
+    Proficient,
+    Expert,
+}
+
+impl Into <String> for SkillLevel {
+    fn into(self) -> String {
+        match self {
+            SkillLevel::Beginner => "10".to_string(),
+            SkillLevel::Intermediate => "30".to_string(),
+            SkillLevel::Advanced => "60".to_string(),
+            SkillLevel::Proficient => "70".to_string(),
+            SkillLevel::Expert => "90".to_string(),
+        }
+    }
+}
+
+
+
+
 #[component]
 pub fn App() -> impl IntoView {
     leptos_meta::provide_meta_context();
@@ -25,7 +49,6 @@ fn Portfolio() -> impl IntoView {
 
     view! {
         <div class="bg-[#1e1e2e] text-[#cdd6f4] font-inter overflow-x-hidden min-h-screen">
-            // Changed to flex-col on mobile, flex-row on desktop
             <div class="flex flex-col md:flex-row w-full min-h-screen">
                 <LeftSection expanded=expanded/>
                 <RightSection expanded = expanded/>
@@ -331,17 +354,15 @@ fn SkillsAndConnect() -> impl IntoView {
                         <SkillCategory 
                             category="Programming" 
                             skills=vec![
-                                ("Rust", 90),
-                                ("Python", 85),
-                                ("TypeScript", 75)
+                                ("Rust", SkillLevel::Intermediate),
+                                ("Python", SkillLevel::Proficient),
                             ]
                         />
                         <SkillCategory 
                             category="Technologies" 
                             skills=vec![
-                                ("WebAssembly", 80),
-                                ("Leptos", 85),
-                                ("React", 70)
+                                ("Git", SkillLevel::Intermediate),
+                                ("Leptos", SkillLevel::Beginner),
                             ]
                         />
                     </div>
@@ -390,7 +411,7 @@ fn SkillsAndConnect() -> impl IntoView {
 #[component]
 fn SkillCategory(
     category: &'static str, 
-    skills: Vec<(&'static str, u8)>
+    skills: Vec<(&'static str, SkillLevel)>
 ) -> impl IntoView {
     view! {
         <div>
@@ -399,12 +420,8 @@ fn SkillCategory(
                 {skills.into_iter().map(|(skill, level)| view! {
                     <div class="flex items-center gap-5">
                         <div class="w-1/3 text-sm text-[#cdd6f4]">{skill}</div>
-                        <div class="w-2/3 bg-[#313244] rounded-full h-2">
-                            <div 
-                                class="bg-[#cba6f7] h-2 rounded-full" 
-                                style=format!("width: {}%", level)
-                            ></div>
-                        </div>
+                        <progress class="progress w-56" value={&<SkillLevel as Into<String>>::into(level)} max="100"></progress>
+
                     </div>
                 }).collect::<Vec<_>>()}
             </div>
