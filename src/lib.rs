@@ -156,7 +156,7 @@ fn RepoCard(
             {move || {
                 if is_long_description {
                     view! {
-                        <div tabindex="0" class="collapse collapse-arrow bg-base-100 border-base-300 border ">
+                        <div tabindex="0" class="collapse collapse-arrow bg-[#a37ecF] border-base-300 border ">
                             <div class="collapse-title font-semibold">Description</div>
                             <div class="collapse-content text-sm">
                                 {description}
