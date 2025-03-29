@@ -4,4 +4,4 @@ Rusty-Portfolio is my portfolio, written in Rust, using Leptos, Tailwind CSS, Da
 
 ## Installation
 
-## Future addition
+## Future additions
