@@ -1,3 +1,5 @@
+#[allow(special_module_name)]
+
 use leptos::*;
 pub mod lib;
 use lib::App;
