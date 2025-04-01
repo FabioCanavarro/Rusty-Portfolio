@@ -6,12 +6,6 @@ use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};
 use component::Portfolio;
 
-
-
-
-
-
-
 #[component]
 pub fn App() -> impl IntoView {
     leptos_meta::provide_meta_context();

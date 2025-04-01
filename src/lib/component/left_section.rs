@@ -2,7 +2,7 @@ use leptos::AnimatedShow;
 use leptos::*;
 use thaw::Button;
 
-use super::RepoCard;
+use super::repo::RepoCard;
 
 #[component]
 pub fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
