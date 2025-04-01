@@ -1,12 +1,9 @@
 pub mod component;
 
 use leptos::component;
-use leptos::AnimatedShow;
 use leptos::*;
 use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};
-use thaw::Button;
-
 use component::Portfolio;
 
 

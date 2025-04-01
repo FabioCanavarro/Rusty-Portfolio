@@ -1,7 +1,8 @@
+pub mod left_section;
+pub mod right_section;
+
 use leptos::AnimatedShow;
 use leptos::*;
-use leptos_meta::{self, Stylesheet};
-use leptos_router::{self, Route, Router, Routes};
 use thaw::Button;
 
 #[allow(dead_code)]
