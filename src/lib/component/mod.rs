@@ -278,7 +278,7 @@ pub fn SkillsAndConnect() -> impl IntoView {
     }
 
 #[component]
-pub fn SkillCategory(
+fn SkillCategory(
     category: &'static str, 
     skills: Vec<(&'static str, SkillLevel)>
 ) -> impl IntoView {
