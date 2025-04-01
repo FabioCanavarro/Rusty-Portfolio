@@ -7,7 +7,6 @@ use super::RepoCard;
 pub fn LeftSection(expanded: RwSignal<bool>) -> impl IntoView {
     let toggle_expanded = move |_| expanded.update(|val| *val = !*val);
 
-    
     let class = move || {
         if expanded.get() {
             "w-full fixed h-screen overflow-auto transition-all duration-500 ease-in-out z-20 transform-none"

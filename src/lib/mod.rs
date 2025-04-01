@@ -1,9 +1,9 @@
 pub mod component;
 
+use component::Portfolio;
 use leptos::*;
 use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};
-use component::Portfolio;
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -18,6 +18,3 @@ pub fn App() -> impl IntoView {
         </Router>
     }
 }
-
-
-

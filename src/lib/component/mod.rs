@@ -1,15 +1,15 @@
 pub mod left_section;
+pub mod profile;
+pub mod repo;
 pub mod right_section;
 pub mod skill;
-pub mod repo;
-pub mod profile;
 
-use repo::*;
-use skill::*;
+use left_section::LeftSection;
 use leptos::*;
 use profile::*;
-use left_section::LeftSection;
+use repo::*;
 use right_section::RightSection;
+use skill::*;
 
 #[component]
 pub fn Portfolio() -> impl IntoView {
@@ -24,5 +24,3 @@ pub fn Portfolio() -> impl IntoView {
         </div>
     }
 }
-
-

@@ -1,12 +1,12 @@
 use leptos::*;
 
-use super::SkillsAndConnect;
 use super::ProfileInfo;
+use super::SkillsAndConnect;
 
 #[component]
 pub fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
     view! {
-        <div 
+        <div
             class=move || {
                 let base_class = "w-full md:w-3/5 min-h-screen p-8 transition-all duration-700 ease-in-out transform";
                 match expanded.get() {

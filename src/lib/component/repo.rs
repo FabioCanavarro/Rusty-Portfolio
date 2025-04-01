@@ -6,7 +6,6 @@ pub fn RepoCard(
     description: &'static str,
     tags: Vec<&'static str>,
 ) -> impl IntoView {
-    
     let is_long_description = description.lines().count() > 3 || description.len() > 150;
 
     view! {
@@ -39,7 +38,7 @@ pub fn RepoCard(
                     }.into_view()
                 }
             }}
-            
+
             <div class="flex flex-wrap gap-2 py-3">
                 {tags.into_iter().map(|tag| view! {
                     <span class="bg-[#585b70] text-[#cdd6f4] px-2 py-1 rounded text-xs">{tag}</span>
@@ -87,4 +86,3 @@ pub fn AllRepos(expanded: Memo<bool>) -> impl IntoView {
         </div>
     }
 }
-
