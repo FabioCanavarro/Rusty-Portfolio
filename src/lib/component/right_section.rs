@@ -1,10 +1,8 @@
 use leptos::AnimatedShow;
 use leptos::*;
 
-use super::{
-    ProfileInfo,
-    SkillsAndConnect,
-};
+use super::SkillsAndConnect;
+use super::ProfileInfo;
 
 #[component]
 pub fn RightSection(expanded: RwSignal<bool>) -> impl IntoView {
