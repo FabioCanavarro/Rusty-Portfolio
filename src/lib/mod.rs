@@ -1,6 +1,5 @@
 pub mod component;
 
-use leptos::component;
 use leptos::*;
 use leptos_meta::{self, Stylesheet};
 use leptos_router::{self, Route, Router, Routes};

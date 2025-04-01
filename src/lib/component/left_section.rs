@@ -1,4 +1,3 @@
-use leptos::AnimatedShow;
 use leptos::*;
 use thaw::Button;
 
